@@ -1,0 +1,109 @@
+.signup {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: inline-block;
+  background: rgb(76, 134, 211);
+  padding: 0 12px;
+  border-radius: 1px;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  width: 90%;
+  border: 1px solid #4c86d3;
+}
+
+.signup--header {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  color: white;
+  padding: 12px;
+}
+
+.signup--usernameInput,
+.signup--passwordInput {
+  @extend .basic-input;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 200;
+  font-size: 12px;
+  padding: 8px;
+  background: #F5F5F5;
+  margin: 12px auto;
+  color: #333;
+  width: 200px;
+  border-radius: 1px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.signup--buttonHolder__submitButton {
+  @extend .basic-input;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  margin-bottom: 12px;
+  width: 216px;
+  font-weight: 200;
+  padding: 8px;
+  background: rgb(86, 181, 127);
+  color: white;
+  border-radius: 1px;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.1);
+}
+
+/* some globals */
+.basic-input {
+  -webkit-appearance: none;
+  border: none;
+}
+
+.signUp--signingIn {
+
+  i {
+    display: inline-block;
+  }
+
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: inline-block;
+  background: #4c86d3;
+  border-radius: 1px;
+  font-weight: 100;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+  color: white;
+}
+
+.errorLoginMessage {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  background: rgb(245, 79, 79);
+  width: 90%;
+  display: block;
+  margin: 12px auto;
+  padding: 12px;
+  border: 1px solid rgb(245, 79, 79);
+  color: white;
+
+  button {
+    font-size: 13px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    -webkit-appearance: none;
+    border: 1px solid white;
+    color: white;
+    font-weight: 100;
+    display: block;
+    margin: 12px auto;
+    background: none;
+    padding: 8px 12px;
+    -webkit-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -moz-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -o-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    border-radius: 1px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background: white;
+    color: #f54f4f;
+  }
+
+}

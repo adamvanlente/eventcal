@@ -1,0 +1,92 @@
+.publicCal--errorMessage,
+.publicCal--noEventsMessage {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: inline-block;
+  padding: 8px 0;
+  font-weight: 100;
+  background: #FD7D7D;
+  color: white;
+  width: 100%;
+}
+
+.publicCal--noEventsMessage {
+  margin-top: 12px;
+}
+
+.editingEvent--heading__logoImage {
+  display: block;
+  margin: 0 auto;
+  min-height: 50px;
+  max-height: 250px;
+  max-width: 95%;
+  margin-bottom: 24px;
+}
+
+.publicHeader {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(239, 239, 239, 1);
+  border-top: 1px solid rgba(0, 0, 0, 0.11);
+  padding: 4px;
+  z-index: 2;
+}
+
+.publicHeader--title {
+
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+
+  img {
+    display: inline-block;
+    height: 12px;
+  }
+
+  a {
+    display: inline-block;
+    font-size: 12px;
+    text-decoration: none;
+    color: #333;
+    vertical-align: top;
+    margin-top: 2px;
+  }
+}
+
+.publicCal--dateHeading {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  padding: 8px;
+  font-weight: 100;
+  text-align: left;
+  background: #56b57f;
+  margin-top: 12px;
+  color: white;
+  font-size: 18px;
+  border-radius: 1px;
+}
+
+.publicCal--scheduleItem {
+  display: block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.04);
+  margin: 12px 0;
+
+  label {
+    font-size: 14px;
+    width: 20%;
+    display: inline-block;
+    padding: 8px;
+    color: rgba(128, 128, 128, 0.96);
+    font-weight: 200;
+    vertical-align: top;
+
+    @media (max-width: 500px) {
+      font-size: 12px;
+      padding: 2px;
+    }
+  }
+}

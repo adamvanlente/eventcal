@@ -1,0 +1,84 @@
+.eventCal--header {
+  display: block;
+  background: rgb(236, 236, 240);
+  padding: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.eventCal--header__title {
+  display: inline-block;
+  width: 20%;
+  color: #333;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  text-align: left;
+  vertical-align: top;
+
+  img {
+    display: inline-block;
+    width: 20px;
+    margin-left: 4px;
+  }
+
+}
+
+.eventCal--header__links {
+  display: inline-block;
+  width: 80%;
+  text-align: right;
+
+  button,
+  a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-appearance: none;
+    border: 1px solid #4c86d3;
+    background: #4c86d3;
+    font-size: 13px;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 1px;
+    margin-left: 12px;
+    -webkit-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -moz-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -o-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    text-decoration: none;
+  }
+
+  a:hover,
+  button:hover {
+    color: #4c86d3;
+    background: none;
+    cursor: pointer;
+  }
+
+}
+
+.eventCal--footer {
+  display: block;
+}
+
+.currentUserName {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+
+  @media (max-width: 500px) {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    padding: 4px;
+    background: white;
+    z-index: 10;
+    left: 0;
+    right: 0;
+  }
+
+}

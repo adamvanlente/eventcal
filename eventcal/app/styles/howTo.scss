@@ -1,0 +1,89 @@
+.howTo {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 100;
+  width: 90%;
+  margin: 12px auto;
+  background: rgba(128, 128, 128, 0.06);
+  padding: 12px;
+  border-radius: 1px;
+  text-align: center;
+  border: 1px solid rgba(76, 134, 211, 0.68);
+}
+
+.howTo--header {
+  display: block;
+  font-size: 24px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  em {
+    font-style: normal;
+    font-weight: 200;
+    color: #4c86d3;
+  }
+
+}
+
+.howTo--steps {
+  display: block;
+  text-align: center;
+
+  span {
+    display: inline-block;
+    padding: 24px 8px;
+    border-radius: 1px;
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+    color: white;
+    margin: 12px;
+    width: 170px;
+    height: 110px;
+    vertical-align: top;
+
+    @media (max-width: 500px) {
+      padding: 0px;
+      margin: 2px auto;
+      width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    header {
+      padding: 8px;
+      font-size: 18px;
+
+      @media (max-width: 500px) {
+        font-size: 16px;
+      }
+
+    }
+
+    i {
+      font-size: 48px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+
+  }
+
+}
+
+.howTo--steps__stepOne {
+  background: #7C56B5;
+  color: white;
+}
+
+.howTo--steps__stepTwo {
+  background: #569CB5;
+  color: white;
+}
+
+.howTo--steps__stepThree {
+  background: #B556B0;
+  color: white;
+}

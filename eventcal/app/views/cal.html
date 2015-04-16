@@ -1,0 +1,57 @@
+<!-- ERROR MESSAGE -->
+<p ng-show="errorFetchingCalendar" class="publicCal--errorMessage">There was an error fetching this calendar.  It may have been deleted, or you may have an incorrect link.</p>
+<!-- END ERROR MESSAGE -->
+
+<!-- HEADING FOR EVENT -->
+
+<img src="{{currentEvent.logo}}" class="editingEvent--heading__logoImage" ng-show="currentEvent.logo">
+
+<div class="editingEvent" ng-show="!errorFetchingCalendar">
+  <div class="editingEvent--heading">
+    <header  class="editingEvent--heading__fixedHeader">
+      <span class="editingEvent--heading__title">{{currentEvent.event_name}}</span>
+      <label class="eventsList--listHolder__eventLocation">
+        <i class="fa fa-map-marker"></i>
+        {{currentEvent.location || 'no location specified'}}
+      </label>
+      <label class="eventsList--listHolder__startDate">
+        <i class="fa fa-calendar"></i>
+        Start date: {{currentEvent.startDate || 'none'}}
+      </label>
+      <label class="eventsList--listHolder__endDate">
+        <i class="fa fa-calendar"></i>
+        End date: {{currentEvent.endDate || 'none'}}
+      </label>
+      <label class="eventsList--listHolder__eventDescription" ng-show={{currentEvent.description}}>{{currentEvent.description || 'no description'}}</label>
+    </header>
+  </div>
+</div>
+<!-- END HEADING FOR EVENT -->
+
+<!-- NO SCHEDULED ITEMS WARNING -->
+<div ng-show="noScheduledItems" class="publicCal--noEventsMessage">There are no items scheduled for this event.</div>
+<!-- END NO SCHEDULED ITEMS WARNING -->
+
+<!-- LIST OF SCHEDULED ITEMS -->
+<div class="publicCal--listOfEvents">
+  <div ng-repeat="item in currentEvent.schedule | orderBy:['date', 'startTime'] | groupBy:['date']">
+      <header ng-show="item.group_by_CHANGED" class="publicCal--dateHeading">{{item.date}}</header>
+      <div class="publicCal--scheduleItem">
+        <label>{{item.startTime || 'Start time TBD'}} - {{item.endTime || 'End time TBD'}}</label>
+        <label>{{item.name || 'Topic TDB'}}</label>
+        <label>{{item.speaker || ''}} <i>{{item.speakerDetails}}</i></label>
+        <label>{{item.location || 'Location TBD'}}</label>
+      </div>
+  </div>
+</div>
+<!-- END LIST OF SCHEDULED ITEMS -->
+
+
+<!-- FOOTER ELEMENT -->
+<footer class="publicHeader">
+  <span class="publicHeader--title">
+    <img src="images/icon.png" alt="">
+    <a href="http://www.eventcal.io">powered by <u>eventcal.io</u></a>
+  </span>
+</footer>
+<!-- END FOOTER ELEMENT -->

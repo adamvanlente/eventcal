@@ -1,0 +1,81 @@
+.addNewEvent {
+  text-align: left;
+  background: rgba(226, 226, 226, 0.13);
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  input[type="text"],
+  textarea {
+    -webkit-appearance: none;
+    border: none;
+    background: rgb(247, 241, 241);
+    display: block;
+    padding: 8px;
+    width: 350px;
+    margin: 8px 0;
+
+    @media (max-width: 500px) {
+      width: 95%;
+    }
+
+  }
+
+}
+
+.addNewEvent--header {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 100;
+  padding: 4px 0;
+}
+
+
+.addNewEvent--submitButton,
+.addNewEvent--cancelButton {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  padding: 5px 12px;
+  font-weight: 100;
+  -webkit-appearance: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.addNewEvent--cancelButton {
+  color: rgb(244, 80, 80);
+  background: none;
+}
+
+.addNewEvent--submitButton {
+  background: #56b57f;
+}
+
+.newEventImage {
+  display: block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 100;
+
+  @media (max-width: 500px) {
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: inline-block;
+    padding: 8px 4px;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  input {
+    -webkit-appearance: none;
+  }
+
+}
+
+.newEventImageUploader {
+  display: inline;
+}

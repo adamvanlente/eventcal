@@ -1,0 +1,286 @@
+<!-- HEADER ELEMENT -->
+<header class="eventCal--header">
+  <span class="eventCal--header__title">
+    eventcal.io
+    <img src="images/icon.png" alt="">
+    </span>
+  <span class="eventCal--header__links">
+    <label class="currentUserName" ng-bind="currentUser.attributes.email"></label>
+    <button ng-show="currentUser" ng-click="myEventsView()">my events</button>
+    <button ng-show="currentUser" ng-click="signUserOut()">logout</button>
+  </span>
+</header>
+<!-- END HEADER ELEMENT -->
+
+<!-- HOWTO ELEMENT -->
+<div class="howTo" ng-hide="currentUser || signingIn">
+  <header class="howTo--header">
+    <em>eventcal.io</em>
+    simple, shareable event calendars
+  </header>
+
+  <div class="howTo--steps">
+    <span class="howTo--steps__stepOne">
+      <header>1. create an account</header>
+      <i class="fa fa-user"></i>
+    </span>
+
+    <span class="howTo--steps__stepTwo">
+      <header>2. create an event</header>
+      <i class="fa fa-calendar"></i>
+    </span>
+
+    <span class="howTo--steps__stepThree">
+      <header>3. share your event</header>
+      <i class="fa fa-link"></i>
+    </span>
+  </div>
+
+</div>
+<!-- END HOWTO ELEMENT -->
+
+<!-- SIGN USER UP OR SIGN USER IN FORM -->
+<div class="errorLoginMessage" ng-show="errorLoginMessage">
+  <span ng-bind="errorLoginMessage" ng-hide="resettingPassword"></span>
+  <span ng-show="resettingPassword">We've sent you an email with instructions for resetting your password.</span>
+  <button ng-click="resetPassword()" ng-hide="resettingPassword">forgot password?</button>
+</div>
+<div class="signup" ng-hide="currentUser || signingIn">
+  <form ng-submit="signUserIn()">
+    <header class="signup--header">sign in / sign up</header>
+    <input type="email" ng-model="username" class="signup--usernameInput" placeholder="email" required>
+    <input type="password" ng-model="password" class="signup--passwordInput" placeholder="password" required>
+    <span class="signup--buttonHolder">
+      <input type="submit" value="submit" class="signup--buttonHolder__submitButton">
+    </span>
+  </form>
+</div>
+<div class="signUp--signingIn" ng-show="signingIn">
+  <i class="fa fa-circle-o-notch fa-spin"></i>
+  <label ng-bing="signingIn"></label>
+</div>
+<!-- SIGN USER UP OR SIGN USER IN FORM -->
+
+<!-- ADD NEW EVENT MODULE -->
+<div class="addNewEvent" ng-show="addingNewEvent && !editingExistingEvent">
+  <form ng-submit="commitAddingNewEvent()">
+    <header class="addNewEvent--header">Add a new Event</header>
+    <input type="text" ng-model="newEventName" placeholder="name of event" required>
+    <input type="text" ng-model="newEventLocation" placeholder="location of event">
+    <input type="text" placeholder="start date" id="new_event_start_date">
+    <input type="text" placeholder="end date" id="new_event_end_date">
+    <textarea ng-model="newEventDescription" placeholder="description of event"></textarea>
+    <span class="newEventImage" id="newEventImage">
+      <label>Upload a logo/header image</label>
+      <input type="file" id="newEventImageUploader" onchange="angular.element(this).scope().imgPickerListener('newEventImageUploader')">
+    </span>
+
+    <input type="submit" value="add event" class="addNewEvent--submitButton">
+    <button ng-click="cancelAddingNewEvent()" class="addNewEvent--cancelButton">cancel</button>
+  </form>
+</div>
+
+<!-- EDIT AN EVENT VIEW -->
+<div class="editingEvent" ng-show="editingExistingEvent && currentlyEditingEvent">
+
+  <div class="editingEvent--heading">
+
+    <header ng-hide="editingWithinEditPage" class="editingEvent--heading__fixedHeader">
+      <span class="editingEvent--heading__title">
+        {{currentlyEditingEvent.event_name}}
+        <button ng-click="editEventDetails()">
+          edit event details
+          <i class="fa fa-edit"></i>
+        </button>
+      </span>
+      <label class="eventsList--listHolder__eventLocation">
+        <i class="fa fa-map-marker"></i>
+        {{currentlyEditingEvent.location || 'no location defined'}}
+      </label>
+      <label class="eventsList--listHolder__startDate">
+        <i class="fa fa-calendar"></i>
+        Start date: {{currentlyEditingEvent.startDate || 'none'}}
+      </label>
+      <label class="eventsList--listHolder__endDate">
+        <i class="fa fa-calendar"></i>
+        End date: {{currentlyEditingEvent.endDate || 'none'}}
+      </label>
+      <label class="eventsList--listHolder__eventDescription">{{currentlyEditingEvent.description || 'no description'}}</label>
+      <img src="{{currentlyEditingEvent.logo}}" class="editingEvent--heading__logoImg">
+    </header>
+
+    <header ng-show="editingWithinEditPage" class="editingEvent--heading__editingHeader">
+      <span>
+        <label>Event name</label>
+        <input type="text" ng-model="currentlyEditingEvent.event_name">
+      </span>
+      <span>
+        <label>Location</label>
+        <input type="text" ng-model="currentlyEditingEvent.location">
+      </span>
+      <span>
+        <label>Start date</label>
+        <input type="text" ng-model="currentlyEditingEvent.startDate" id="editing_start_date">
+      </span>
+      <span>
+        <label>End date</label>
+        <input type="text" ng-model="currentlyEditingEvent.endDate" id="editing_end_date">
+      </span>
+      <span>
+        <label>Description</label>
+        <textarea ng-model="currentlyEditingEvent.description">{{currentlyEditingEvent.description}}</textarea>
+      </span>
+      <span class="editingEventImage" id="editingEventImage">
+        <label>Update logo</label>
+        <input type="file" id="editEventImageUploader" onchange="angular.element(this).scope().imgPickerListener('editEventImageUploader')">
+      </span>
+
+      <button ng-click="finshEditingEvent()">
+        finish editing
+        <i class="fa fa-edit"></i>
+      </button>
+    </header>
+
+    <!-- EDIT A SCHEDULED ITEM -->
+    <div ng-show="editingScheduleItem" class="editingEvent--editingScheduleItem">
+
+      <header>Edit scheduled item</header>
+
+      <input type="text" ng-model="currentlyEditingScheduleItem.name" placeholder="Item name (ex. Opening Keynote)">
+      <input type="text" ng-model="currentlyEditingScheduleItem.speaker" placeholder="Speaker name (ex. Elon Musk)">
+      <input type="text" ng-model="currentlyEditingScheduleItem.speakerDetails" placeholder="Speaker details (ex. CEO/Founder, Tesla Motors)">
+      <input type="text" ng-model="currentlyEditingScheduleItem.location" placeholder="Location (ex. Moscone Hall D)">
+      <input type="text" ng-model="currentlyEditingScheduleItem.date" placeholder="Date" id="editingScheduleItemDate">
+      <input type="text" ng-model="currentlyEditingScheduleItem.startTime" placeholder="Start time (Use military time, eg 0800)">
+      <input type="text" ng-model="currentlyEditingScheduleItem.endTime" placeholder="End time (Use military time, eg 0900)">
+
+      <span class="editingEvent--editingScheduleItem__buttonHolder">
+        <button ng-click="finishEditingScheduleItem()" class="editingEvent--editingScheduleItem__finishButton">finish</button>
+        <button ng-click="deleteEditingScheduleItem()" class="editingEvent--editingScheduleItem__deleteButton">delete this item</button>
+      </span>
+    </div>
+    <!-- END EDIT A SCHEDULED ITEM -->
+
+
+    <!-- SHOW LIST OF SCHEDULED ITEMS WITHIN EVENT -->
+    <div class="editingEvent--addItems" ng-hide="editingScheduleItem">
+
+      <h2>
+        Event schedule
+        <button ng-click="addScheduleItemToEvent()">
+          add item
+          <i class="fa fa-plus"></i>
+        </button>
+      </h2>
+
+      <div ng-show="addingScheduleItemToEvent" class="editingEvent--addItems__newItemAdder">
+        <span>New schedule item</span>
+        <form ng-submit="createNewScheduleItem()">
+          <input type="text" placeholder="Item name (ex. Opening Keynote)" ng-model="eventItemName" required>
+          <input type="text" placeholder="Speaker name (ex. Elon Musk)" ng-model="eventItemSpeaker">
+          <input type="text" placeholder="Speaker details (ex. CEO/Founder, Tesla Motors)" ng-model="eventItemSpeakerDetails">
+          <input type="text" placeholder="Location (ex. Moscone Hall D)" ng-model="eventItemLocation">
+          <input type="text" placeholder="Date" id="newScheduleItemDate" required>
+          <input type="text" placeholder="Start time (Use military time, eg 0800)" ng-model="eventItemStartTime" required>
+          <input type="text" placeholder="End time (Use military time, eg 0900)" ng-model="eventItemEndTime" required>
+          <input type="submit" value="add item">
+          <label ng-click="cancelAddingScheduleItem()" class="editingEvent--addItems__cancelAddingLabel">cancel</label>
+        </form>
+      </div>
+
+      <div ng-show="editingEventHasItems" class="eventItems">
+
+        <div class="eventItems--legend">
+          <label class="eventItems--legend__item">Title</label>
+          <label class="eventItems--legend__item">Speaker</label>
+          <label class="eventItems--legend__item">Location</label>
+          <label class="eventItems--legend__item">Date</label>
+          <label class="eventItems--legend__item">Time</label>
+        </div>
+
+        <div ng-repeat="item in currentlyEditingEvent.schedule | orderBy:['date', 'startTime'] track by $index" class="eventItems--listItem">
+          <label class="eventItems--listItem__item">{{item.name}}</label>
+          <label class="eventItems--listItem__item">
+            <em ng-show="item.speaker" class="eventItems--listItem__speakerDetails">{{item.speaker}}</em>
+            <em ng-show="item.speakerDetails" class="eventItems--listItem__speakerDetails">{{item.speakerDetails}}</em>
+          </label>
+          <label class="eventItems--listItem__item">{{item.location}}</label>
+          <label class="eventItems--listItem__item">{{item.date}}</label>
+          <label class="eventItems--listItem__item">
+            <em ng-show="item.startTime">{{item.startTime}} - </em>
+            <em ng-show="item.endTime">{{item.endTime}}</em>
+          </label>
+          <button ng-click="editScheduleItem(item.name, item.date, item.startTime, item.endTime)">
+            edit
+            <i class="fa fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- END SHOW LIST OF SCHEDULED ITEMS WITHIN EVENT -->
+
+  </div>
+</div>
+
+<!-- SHOW USER'S LIST OF EVENTS -->
+<div class="eventsList" ng-show="currentUser && !addingNewEvent && !editingExistingEvent">
+
+  <header class="eventsList--header">
+    <span>My events</span>
+    <button ng-click="launchAddEventModule()">add event</button>
+  </header>
+  <span class="eventsList--noEventsWarning" ng-hide="userHasEvents">
+    You have no events
+  </span>
+
+  <div class="eventsList--shareLink" ng-show="shareLink">
+    <header>Share a calendar: {{currentlySharingEvent.event_name}}</header>
+    <input type="text" ng-model="shareLink" id="shareLink">
+    <input type="text" id="vanityLink" style="display:none;">
+    <button ng-click="finishSharingEventLink()" class="eventsList--finishEditingButton">ok</button>
+    <em>click ctrl+c or cmd+c to copy the calendar URL</em>
+    <button id="createVanityUrlButton" class="eventsList--vanityUrlButton" ng-click="createVanityShareLink()">Create vanity url</button>
+  </div>
+
+  <div ng-show="creatingVanityUrl" class="vanityUrl">
+    <span>
+      <label>http://evnt.link/</label>
+      <input type="text" ng-model="currentlySharingEvent.vanityUrl" placeholder="ex: MyEventName">
+      <button ng-click="finishCreatingVanityUrl()">save vanity link</button>
+      <em ng-click="cancelCreatingVanityUrl()">cancel</em>
+    </span>
+  </div>
+
+  <div class="eventsList--listHolder">
+
+    <!-- REPEATING ELEMENT FOR EACH USER EVENT -->
+    <div class="eventsList--listHolder__event" ng-repeat="event in eventsList | orderBy:'-startDate' track by $index">
+      <header class="eventsList--listHolder__eventTitle">
+        <span>{{event.event_name}}</span>
+        <button ng-click="editEvent(event)" class="eventsList--listHolder__editButton">
+          edit
+          <i class="fa fa-edit"></i>
+        </button>
+        <button ng-click="shareEvent(event)" class="eventsList--listHolder__shareButton">
+          share
+          <i class="fa fa-link"></i>
+        </button>
+
+      </header>
+      <label class="eventsList--listHolder__eventLocation">
+        <i class="fa fa-map-marker"></i>
+        {{event.location || 'no location defined'}}
+      </label>
+      <label class="eventsList--listHolder__startDate" ng-show="{{event.startDate}}">
+        <i class="fa fa-calendar"></i>
+        Start date: {{event.startDate}}
+      </label>
+      <label class="eventsList--listHolder__endDate" ng-show="{{event.endDate}}">
+        <i class="fa fa-calendar"></i>
+        End date: {{event.endDate}}
+      </label>
+      <label class="eventsList--listHolder__eventDescription" ng-show="event.description">{{event.description}}</label>
+    </div>
+    <!-- END REPEATING ELEMENT FOR EACH USER EVENT -->
+  </div>
+</div>

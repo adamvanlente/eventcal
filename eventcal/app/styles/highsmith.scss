@@ -1,0 +1,113 @@
+.highsmithCal {
+  display: block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  position: fixed;
+  z-index: 10000;
+  width: 250px;
+  border: 1px solid;
+  top: 5%;
+  left: 40%;
+  text-align: center;
+  background: white;
+
+  @media (max-width: 500px) {
+    left: 20%;
+  }
+
+}
+
+.highsmithCal--month {
+  display: block;
+  font-size: 18px;
+  background: rgb(242, 242, 242);
+  padding: 4px;
+}
+
+.highsmithCal--month__label {
+  display: inline-block;
+  width: 80%;
+}
+.highsmithCal--month__increment,
+.highsmithCal--month__decrement,
+.highsmithCal--year__increment,
+.highsmithCal--year__decrement {
+  display: inline-block;
+  cursor: pointer;
+}
+.highsmithCal--month__increment:hover,
+.highsmithCal--month__decrement:hover,
+.highsmithCal--year__increment:hover,
+.highsmithCal--year__decrement:hover {
+  opacity: 0.8;
+}
+.highsmithCal--year {
+  display: block;
+  font-size: 16px;
+  padding: 4px;
+  background: rgb(236, 236, 236);
+}
+.highsmithCal--year__label {
+  display: inline-block;
+  width: 70%;
+}
+.highsmithCal--daysLegend {
+  display: block;
+  background: rgba(0, 0, 0, 0.56);
+  color: white;
+}
+.highsmithCal--dayHolder__nullLabel {
+  background-color: rgba(51, 51, 51, 0.07);
+  display: inline-block;
+  width: 25px;
+  height: 24px;
+  margin: 2px;
+  padding: 0 2px;
+}
+.highsmithCal--dayHolder__label {
+  display: inline-block;
+  width: 25px;
+  vertical-align: top;
+  margin: 2px;
+  padding: 3px 2px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 0.5s cubic-bezier(0.7, 0.53, 0, 0.2);
+  -moz-transition: all 0.5s cubic-bezier(0.7, 0.53, 0, 0.2);
+  -o-transition: all 0.5s cubic-bezier(0.7, 0.53, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.7, 0.53, 0, 0.2);
+}
+.highsmithCal--daysLegend__label {
+  display: inline-block;
+  padding: 2px;
+  width: 25px;
+  font-size: 14px;
+  margin: 2px;
+}
+
+.highsmithCal--dayHolder__label:hover {
+background-color: #333333;
+
+}
+.highsmithCal--dayHolder__nullLabel {
+background-color: rgba(51, 51, 51, 0.07);
+
+
+}
+.highsmithCal--dayHolder {
+  display: block;
+  text-align: left;
+  marginl-top: 8px;
+  margin-left: 9px;
+}
+
+.highsmithCal--offClicker {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(255,255,255,0.9);
+}

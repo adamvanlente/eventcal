@@ -1,0 +1,315 @@
+.eventsList {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 100;
+  text-align: left;
+}
+
+.eventsList--header {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 100;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.19);
+  padding: 4px 0;
+
+  button {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    -webkit-appearance: none;
+    border: 1px solid #56b57f;
+    background: #56b57f;
+    color: white;
+    padding: 4px 8px;
+    margin-left: 12px;
+    border-radius: 1px;
+    float: right;
+    cursor: pointer;
+    -webkit-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -moz-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -o-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  }
+
+  button:hover {
+    color: #56b57f;
+    background: white;
+  }
+}
+
+.eventsList--noEventsWarning {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 8px;
+  margin: 8px 0;
+  text-align: center;
+  display: block;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.eventsList--listHolder__event {
+  display: block;
+  background: rgb(250, 250, 250);
+  padding: 8px;
+  margin: 12px 0;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.eventsList--listHolder__eventTitle {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+
+  span {
+    @media (max-width: 500px) {
+      display: block;
+    }
+  }
+
+  button {
+    @media (max-width: 500px) {
+      float: none;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+  }
+
+}
+
+.eventsList--listHolder__editButton {
+  -webkit-appearance: none;
+  float: right;
+  background: none;
+  color: rgb(130, 130, 226);
+  text-transform: uppercase;
+  border: 1px solid rgb(130, 130, 226);
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  -moz-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  -o-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+}
+.eventsList--listHolder__editButton:hover {
+  background: rgb(130, 130, 226);
+  color: white;
+}
+
+.eventsList--listHolder__shareButton {
+  -webkit-appearance: none;
+  float: right;
+  background: none;
+  color: #FD7D7D;
+  text-transform: uppercase;
+  border: 1px solid #FD7D7D;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  margin-right: 8px;
+}
+.eventsList--listHolder__shareButton:hover {
+  background: #FD7D7D;
+  color: white;
+}
+
+.eventsList--listHolder__eventLocation {
+  display: block;
+  font-size: 14px;
+  margin: 4px 0;
+
+  i {
+    color: #B860E4;
+    font-size: 16px;
+    width: 18px;
+    text-align: center;
+  }
+
+}
+
+.eventsList--listHolder__startDate {
+  display: block;
+  font-size: 12px;
+  margin: 4px 0;
+
+  i {
+    color: rgb(66, 205, 126);
+    font-size: 13px;
+    width: 18px;
+    text-align: center;
+  }
+}
+
+.eventsList--listHolder__endDate {
+  display: block;
+  font-size: 12px;
+  margin: 4px 0;
+
+  i {
+    color: rgb(252, 113, 113);
+    font-size: 13px;
+    width: 18px;
+    text-align: center;
+  }
+}
+
+.eventsList--listHolder__eventDescription {
+  display: block;
+  font-size: 14px;
+  background: white;
+  margin: 8px 0;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.eventsList--shareLink {
+  display: block;
+  padding: 8px;
+  background: #FD7D7D;
+  border-radius: 1px;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  header {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    font-size: 22px;
+    padding: 12px 0;
+    color: white;
+    width: 90%;
+  }
+
+  input {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 200;
+    font-size: 14px;
+    display: inline-block;
+    -webkit-appearance: none;
+    border: none;
+    padding: 6px 4px;
+    width: 80%;
+    color: rgba(51, 51, 51, 0.78);
+    background: rgba(255, 255, 255, 0.91);
+    box-shadow: 0 1px 1px rgba(255,255,255,0.1);
+  }
+
+  button {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 1px;
+    -webkit-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -moz-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    -o-transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+    transition: all 0.1s cubic-bezier(0.7, 0.53, 0, 0.2);
+  }
+
+  em {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    margin: 2px 0 0 2px;
+    display: block;
+    color: white;
+  }
+}
+
+.eventsList--finishEditingButton {
+  font-size: 14px;
+  border: 1px solid white;
+  color: white;
+  background: none;
+  padding: 5px 16px;
+  display: inline-block;
+}
+
+.eventsList--finishEditingButton:hover {
+  background: white;
+  color: #FD7D7D;
+}
+
+.eventsList--vanityUrlButton {
+  display: block;
+  padding: 5px 16px;
+  margin: 12px auto;
+  font-size: 14px;
+  border: 1px solid white;
+  color: white;
+  background: rgb(66, 173, 205);
+}
+
+.eventsList--vanityUrlButton:hover {
+  background: white;
+  color: rgb(66, 173, 205);
+}
+
+.vanityUrl {
+
+  display: block;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.92);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  span {
+    display: block;
+    width: 400px;
+    margin: 24px auto;
+    text-align: center;
+    background: #56b57f;
+    padding: 12px;
+  }
+
+  label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    color: white;
+  }
+
+  input {
+    -webkit-appearance: none;
+    border: none;
+    padding: 4px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    width: 200px;
+  }
+
+  button {
+    -webkit-appearance: none;
+    padding: 4px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    width: 200px;
+    margin-top: 24px;
+    color: white;
+    border: 1px solid;
+    background: rgb(130, 130, 236);
+    cursor: pointer;
+  }
+
+  em {
+    display: block;
+    color: white;
+    font-style: normal;
+    margin: 12px 0 0 0;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  em:hover {
+    opacity: 0.8;
+  }
+
+}
